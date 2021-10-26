@@ -1,10 +1,13 @@
-<form [formGroup]="cardForm" (ngSubmit)="save">
+<form [formGroup]="cardForm" (ngSubmit)="save()">
     <div class="row">
         <div class="col-12 mt-3">
             <div class="form-group">
                 <label for="name">Название</label>
                 <input type="text" class="form-control" id="name" placeholder="Название" 
-                formControlName="name" [ngClass]="{ 'has-error': cardForm.get('name')?.invalid && cardForm.get('name')?.touched}"/>
+                formControlName="name" 
+                [ngClass]="{ 
+                    'has-error': cardForm.get('name')?.invalid && 
+                    cardForm.get('name')?.touched}"/>
                 <small class="form-text text-muted">Обязательно, до 100 символов</small>
             </div>
         </div>
@@ -13,8 +16,37 @@
             <div class="form-group">
                 <label for="name">Содержимое</label>
                 <textarea class="form-control" id="content" placeholder="Содержимое" 
-                formControlName="content" [ngClass]="{ 'has-error': cardForm.get('content')?.invalid && cardForm.get('content')?.touched}"></textarea>
+                formControlName="content" 
+                [ngClass]="{
+                     'has-error': cardForm.get('content')?.invalid &&
+                      cardForm.get('content')?.touched}"></textarea>
                 <small class="form-text text-muted">Обязательно, до 500 символов</small>
+            </div>
+        </div>
+        <div class="col-12 mt-3">
+            <div class="form-group">
+                <select 
+                    class="form-control" 
+                    id="type"
+                    formControlName="type"
+                    required="true"
+                    
+                    [ngClass]="{
+                        'has-error': 
+                           cardForm.get('type')?.invalid && 
+                           cardForm.get('type')?.touched
+                       }"
+                >
+                    <option [ngValue]="null">Выберите тип заметки</option>
+                    <option [ngValue]="1">тест</option>
+                    <option *ngFor="let type of types" [ngValue]="type.id">{{type.name}}</option>
+                </select>
+                <small class="form-text text-muted">Обязательно</small>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary" [disabled]="cardForm.invalid">Сохранить</button>
             </div>
         </div>
     </div>

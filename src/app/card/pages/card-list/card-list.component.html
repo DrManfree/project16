@@ -17,7 +17,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let card of cards">
+              <tr *ngFor="let card of cards" (click)="linkToItem(card.id)">
                 <td>{{card.id}}</td>
                 <td>{{card.name}}</td>
                 <td>{{card.content}}</td>

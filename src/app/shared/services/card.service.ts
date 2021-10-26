@@ -23,7 +23,7 @@ export class CardService {
   }
 
   putCard(id : number, data: Card) : Promise<Card> {
-    return this.http.post<Card>(`${environment.apiUrl}/cards/${id}`, data).toPromise();
+    return this.http.put<Card>(`${environment.apiUrl}/cards/${id}`, data).toPromise();
   }
 
   deleteCard(id: number) : Promise<Card> {
