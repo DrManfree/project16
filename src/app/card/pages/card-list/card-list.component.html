@@ -1,1 +1,31 @@
-<p>card-list works!</p>
+<div class="row">
+    <div class="col-12">
+        <button class="btn btn-primary float-end" (click)="linkToItem()">Новая заметка</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Содержимое</th>
+                <th>Тип записки</th>
+                <th>Дата создания</th>
+                <th>Дата редактирования</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let card of cards">
+                <td>{{card.id}}</td>
+                <td>{{card.name}}</td>
+                <td>{{card.content}}</td>
+                <td>{{card.type}}</td>
+                <td>{{card.createdate}}</td>
+                <td>{{card.editdate}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>

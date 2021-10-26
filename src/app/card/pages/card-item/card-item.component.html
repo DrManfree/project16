@@ -1,1 +1,21 @@
-<p>card-item works!</p>
+<form [formGroup]="cardForm" (ngSubmit)="save">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <div class="form-group">
+                <label for="name">Название</label>
+                <input type="text" class="form-control" id="name" placeholder="Название" 
+                formControlName="name" [ngClass]="{ 'has-error': cardForm.get('name')?.invalid && cardForm.get('name')?.touched}"/>
+                <small class="form-text text-muted">Обязательно, до 100 символов</small>
+            </div>
+        </div>
+
+        <div class="col-12 mt-3">
+            <div class="form-group">
+                <label for="name">Содержимое</label>
+                <textarea class="form-control" id="content" placeholder="Содержимое" 
+                formControlName="content" [ngClass]="{ 'has-error': cardForm.get('content')?.invalid && cardForm.get('content')?.touched}"></textarea>
+                <small class="form-text text-muted">Обязательно, до 500 символов</small>
+            </div>
+        </div>
+    </div>
+</form>

@@ -5,6 +5,7 @@ import { CardRoutingModule } from './card-routing.module';
 import { CardListComponent } from './pages/card-list/card-list.component';
 import { CardItemComponent } from './pages/card-item/card-item.component';
 import { CardLayoutComponent } from './shared/components/card-layout/card-layout.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import { CardLayoutComponent } from './shared/components/card-layout/card-layout
   ],
   imports: [
     CommonModule,
-    CardRoutingModule
+    CardRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class CardModule { }

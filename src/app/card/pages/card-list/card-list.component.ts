@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Card } from 'src/app/shared/interfaces/card.interface';
+import { CardService } from 'src/app/shared/services/card.service';
 
 @Component({
   selector: 'app-card-list',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardListComponent implements OnInit {
 
-  constructor() { }
+  cards!: Card[];
+  constructor(private cardService: CardService, private router: Router) { }
 
   ngOnInit(): void {
+    this.getData();
   }
 
+  async getData() {
+    try {
+      this.cards = await this.cardService.getCards() || [];
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  linkToItem(id?: number) {
+    if (id) {
+      this.router.navigate([this.router.url, 'item', id]);
+    }
+    else {
+      this.router.navigate([this.router.url, 'item']);
+    }
+  }
 }
