@@ -1,0 +1,21 @@
+<form [formGroup]="typeForm" (ngSubmit)="save()">
+    <div class="row">   
+        <div class="col-12 mt-3">
+            <div class="form-group">
+                <label for="name">Название</label>
+                <input type="text" class="form-control" id="name" placeholder="Название" 
+                formControlName="name" 
+                [ngClass]="{ 
+                    'has-error': typeForm.get('name')?.invalid && 
+                    typeForm.get('name')?.touched}"/>
+                <small class="form-text text-muted">Обязательно, до 100 символов</small>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary" [disabled]="typeForm.invalid">Сохранить</button>
+                <button type="button" class="btn btn-danger ms-2" *ngIf="id" (click)="delete()">Удалить</button>
+            </div>
+        </div>
+    </div>
+</form>
