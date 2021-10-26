@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './pages/main/main.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ContactComponent } from './pages/contact/contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    HeaderComponent
+    HeaderComponent,
+    ContactComponent
   ],
   imports: [
     HttpClientModule,

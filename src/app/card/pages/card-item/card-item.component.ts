@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Card } from 'src/app/shared/interfaces/card.interface';
 import { Type } from 'src/app/shared/interfaces/type.interface';
 import { CardService } from 'src/app/shared/services/card.service';
+import { TypeService } from 'src/app/shared/services/type.service';
 
 @Component({
   selector: 'app-card-item',
@@ -15,7 +16,7 @@ export class CardItemComponent implements OnInit {
   card!: Card;
   cardForm!: FormGroup;
   types: Type[] = [];
-  constructor(private cardService: CardService, private fb: FormBuilder, private router: Router, private activatedRouter: ActivatedRoute) { }
+  constructor(private cardService: CardService, private typeService: TypeService, private fb: FormBuilder, private router: Router, private activatedRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRouter.params.subscribe(params => {
@@ -34,7 +35,7 @@ export class CardItemComponent implements OnInit {
     };
 
     this.cardForm = this.fb.group(controls);
-
+    this.types = await this.typeService.getTypes();
     if (this.id) {
       try {
         this.card = await this.cardService.getCard(this.id);

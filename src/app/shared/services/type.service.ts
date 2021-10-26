@@ -23,7 +23,7 @@ export class TypeService {
   }
 
   putType(id : number, data: Type) : Promise<Type> {
-    return this.http.post<Type>(`${environment.apiUrl}/Types/${id}`, data).toPromise();
+    return this.http.put<Type>(`${environment.apiUrl}/Types/${id}`, data).toPromise();
   }
 
   deleteType(id: number) : Promise<Type> {

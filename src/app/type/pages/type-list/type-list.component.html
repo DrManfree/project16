@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-12">
+        <button class="btn btn-primary float-end" (click)="linkToItem()">Новый тип заметки</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Название</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let type of types" (click)="linkToItem(type.id)">
+                <td>{{type.id}}</td>
+                <td>{{type.name}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
