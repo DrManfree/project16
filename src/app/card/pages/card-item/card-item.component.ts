@@ -29,6 +29,8 @@ export class CardItemComponent implements OnInit {
       name: [null, [Validators.required, Validators.maxLength(100)]],
       content: [null, [Validators.required, Validators.maxLength(500)]],
       type: [null, [Validators.required, Validators.maxLength(100)]],
+      createdate: [null],
+      editdate: [null]
     };
 
     this.cardForm = this.fb.group(controls);
@@ -50,7 +52,8 @@ export class CardItemComponent implements OnInit {
   async save() {
     if (this.id) {
       let card = this.cardForm.value;
-      card.editdate = new Date();
+      let temp : Date = new Date();
+      card.editdate = temp;
       try {
         await this.cardService.putCard(this.id, card);
         this.getData();
@@ -70,6 +73,15 @@ export class CardItemComponent implements OnInit {
       catch (error) {
        console.log(error);
       }
+    }
+  }
+
+  async delete() {
+    try {
+      await this.cardService.deleteCard(this.id!);
+      this.router.navigate(['card']);
+    } catch (error) {
+      console.log(error);
     }
   }
 }
